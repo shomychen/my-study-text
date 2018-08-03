@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex用法</title>
+     <style>
+         *{
+             margin:0;
+             padding: 0;
+         }
+         .flex-test{
+             width:100%;
+             height:400px;
+             margin:0 auto;
+         }
+         .first .flex{
+             display: flex;
+         }
+ /*        .first .flex-col {
+             flex: 1;
+         }*/
+         .first .flex-col.lef{
+             background: aquamarine;
+             flex: 1;
+         }
+
+         .first .flex-col.mid {
+             background: bisque;
+             width: 200px;
+         }
+
+         .first .flex-col.rig {
+             background: indianred;
+             width: 100px;
+         }
+     </style>
+</head>
+<body>
+<div class="flex-test first">
+    <div class="flex">
+        <div class="flex-col lef">Flex左边，不固定宽度，剩下的宽度全部占用<br/><code>flex: 1;</code></div>
+        <div class="flex-col mid">Flex中间, 固定宽度200px<br/><code>flex: 1;</code></div>
+        <div class="flex-col rig">Flex右边, 固定宽度100px<br/>    <code>flex: 1;</code></div>
+    </div>
+</div>
+</body>
+</html>

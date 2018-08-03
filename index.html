@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+ <div>使用Node和Express编写RESTful API</div>
+ <div>启动 <code style="font-size: 12px; background: #b9dcb9;">$ node server.js</code></div>
+<button>获取数据</button>
+ <script type="text/javascript">
+    const btn = document.querySelector('button');
+    btn.addEventListener('click',getData);
+    function getData(e){
+        $.ajax({
+            url : '/users',
+            method : 'GET',
+            success : function(data){
+                console.log(data);
+            },
+            error: function(err){
+                console.log('Failed');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
