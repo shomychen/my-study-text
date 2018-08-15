@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=yes">
+    <title>申请入驻</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="app" class="wrap">
+    <div class="header">
+
+    </div>
+    <div class="container">
+        <div class="form">
+            <div class="form-items">
+                <mt-field label="姓名" placeholder="请输入姓名" v-model="info.name"></mt-field>
+                <mt-field label="年龄" placeholder="请输入年龄"  type="number"  v-model="info.age"></mt-field>
+                <mt-field label="教授科目" placeholder="请输入教授科目" v-model="info.subject"></mt-field>
+                <mt-field label="教龄" placeholder="请输入教龄"  type="number"  v-model="info.exAge"></mt-field>
+                <mt-field label="擅长科目及年级" placeholder="多个科目或年级以,隔开" v-model="info.goodSubject"></mt-field>
+                <mt-field label="教学经历" placeholder="请输入教学经历" type="textarea" rows="4" v-model="info.experience"></mt-field>
+                <mt-field label="教学特色" placeholder="请输入教学特色" type="textarea" rows="4" v-model="info.characteristic"></mt-field>
+                <mt-field label="教学成功案例" placeholder="请输入教学成功案例" type="textarea" rows="4" v-model="info.case"></mt-field>
+                <div class="mint-cell mint-field">
+                    <div class="mint-cell-wrapper">
+                        <div class="mint-cell-title"><span class="mint-cell-text">获奖证书</span></div>
+                        <div class="mint-cell-value">
+                            <div class="photo-list">
+                                <div class="photo-item" v-for="(item, index) in info.certificate">
+                                    <div class="photo-del"></div>
+                                    <div class="photo-image" :style="{'backgroundImage': 'url('+item+')'}"></div>
+                                </div>
+                                <div class="photo-item">
+                                    <i class="mintui mintui-back"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <mt-cell title="获奖证书">
+                    <!-- info.certificate -->
+
+                </mt-cell>
+
+                <mt-cell title="意向入驻校区" is-link >
+                    <div>dd{{info.school}}</div>
+                </mt-cell>
+                <mt-field label="联系电话" placeholder="请输入联系电话" type="tel" v-model="info.phone" :attr="{maxLength: 11}"></mt-field>
+            </div>
+            <div class="form-submit">
+                <mt-button @click.native="handleClick"  type="primary"  size="large">提交</mt-button>
+            </div>
+        </div>
+        <div class="contact">
+            联系方式：有二维码等
+        </div>
+    </div>
+</div>
+<script src="js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script src="js/index.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            info: {
+                name: '',
+                age: null, // 年龄
+                subject: '', // 教授科目
+                exAge: null, // 教龄
+                goodSubject: '',
+                experience: '', // 教学经历
+                characteristic: '', // 教学特色
+                case: '', // 教学成功案例
+                school: '',
+                certificate: [
+                    "http://vteach-file-1.oss-cn-shenzhen.aliyuncs.com/20180810/15338911974253tivrd-11.jpg",
+                    "http://vteach-file-1.oss-cn-shenzhen.aliyuncs.com/20180810/15338911974253tivrd-11.jpg",
+                    "http://vteach-file-1.oss-cn-shenzhen.aliyuncs.com/20180810/15338911974253tivrd-11.jpg"
+                ],
+                phone: '',
+            },
+            valid: {
+                name: {
+                    require: true,
+                }
+            }
+        },
+        methods: {
+            handleClick: function (event) {
+                console.log(event);
+                for(item in this.info) {
+                    console.log(item);
+                    console.log(this.info[item]);
+                }
+            }
+        }
+    })
+
+    // 表单组件：
+    Vue.component('my-form', { })
+</script>
+</body>
+</html>
